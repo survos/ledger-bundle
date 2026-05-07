@@ -1,0 +1,35 @@
+{
+    "name": "survos/ledger-bundle",
+    "description": "Template-aware extraction for typed ledger-style documents with handwritten values.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": ["symfony", "ledger", "ocr", "htr", "vision", "archives", "census"],
+    "autoload": {
+        "psr-4": {
+            "Survos\\LedgerBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Survos\\LedgerBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "survos/ai-pipeline-bundle": "^2.0",
+        "symfony/config": "^8.0",
+        "symfony/dependency-injection": "^8.0",
+        "symfony/http-kernel": "^8.0",
+        "symfony/twig-bundle": "^8.0",
+        "twig/twig": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.0",
+        "symfony/framework-bundle": "^8.0"
+    },
+    "extra": {
+        "symfony": {
+            "require": "^8.0"
+        }
+    }
+}
