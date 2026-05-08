@@ -1,0 +1,67 @@
+LedgerSpec template:
+
+```json
+{{ templateJson }}
+```
+
+{% if ocrText %}
+Prior OCR/transcription text:
+
+```text
+{{ ocrText }}
+```
+{% endif %}
+
+{% if layoutJson %}
+Prior layout output:
+
+```json
+{{ layoutJson }}
+```
+{% endif %}
+
+Return a JSON object with this shape:
+
+```json
+{
+  "template_id": "{{ template.id }}",
+  "page_fields": {
+    "field_id": {
+      "value": "verbatim value",
+      "confidence": "high|medium|low",
+      "notes": ""
+    }
+  },
+  "regions": {
+    "region_id": {
+      "text": "verbatim extracted region text",
+      "confidence": "high|medium|low",
+      "notes": ""
+    }
+  },
+  "tables": {
+    "table_id": {
+      "rows": [
+        {
+          "row_number": 1,
+          "cells": {
+            "column_id": {
+              "value": "verbatim value",
+              "confidence": "high|medium|low",
+              "notes": ""
+            }
+          }
+        }
+      ],
+      "notes": ""
+    }
+  },
+  "warnings": []
+}
+```
+
+Rules:
+- Include every row defined by the template when there is visible or OCR evidence for it.
+- Do not add fields or columns not present in the template.
+- For repeated tables, key cells by LedgerSpec column id, not by printed label.
+- Preserve ditto marks, blanks, and abbreviations unless a template rule explicitly asks for normalization.

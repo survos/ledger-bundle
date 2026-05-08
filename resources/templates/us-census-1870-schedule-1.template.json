@@ -1,0 +1,115 @@
+{
+  "schema": "https://schemas.survos.com/ledger/v1/template.json",
+  "kind": "ledger_template",
+  "id": "us-census-1870-schedule-1",
+  "version": "2026.1-draft",
+  "title": "1870 U.S. Federal Census, Schedule 1 - Inhabitants",
+  "coordinateSpace": {
+    "width": 10000,
+    "height": 14000,
+    "origin": "topLeft",
+    "units": "normalized"
+  },
+  "alignment": {
+    "strategy": "printed_grid",
+    "anchors": [
+      { "id": "schedule_title", "kind": "text", "expectedText": "SCHEDULE 1. Inhabitants" },
+      { "id": "column_number_row", "kind": "numbered_columns", "expectedRange": [1, 20] },
+      { "id": "row_number_margin", "kind": "numbered_rows", "expectedRange": [1, 40] },
+      { "id": "main_table", "kind": "grid" }
+    ]
+  },
+  "pageFields": [
+    { "id": "page_no", "label": "Page No.", "type": "integer", "bbox": [1030, 760, 520, 220] },
+    { "id": "township", "label": "Inhabitants in", "type": "text", "bbox": [3100, 1080, 2450, 260] },
+    { "id": "county", "label": "County", "type": "text", "bbox": [6900, 1080, 1650, 260] },
+    { "id": "state", "label": "State", "type": "text", "bbox": [9000, 1080, 650, 260] },
+    { "id": "enumeration_day", "label": "Enumeration day", "type": "integer", "bbox": [4750, 1440, 550, 260] },
+    { "id": "enumeration_month", "label": "Enumeration month", "type": "text", "bbox": [5700, 1440, 900, 260] },
+    { "id": "post_office", "label": "Post Office", "type": "text", "bbox": [1450, 1810, 2300, 260] },
+    { "id": "assistant_marshal", "label": "Assistant Marshal", "type": "text", "bbox": [7100, 1810, 2100, 260] }
+  ],
+  "regions": [
+    {
+      "id": "instruction_header",
+      "kind": "printed_text",
+      "label": "Instruction header",
+      "bbox": [500, 650, 9000, 420],
+      "extraction": { "read": false }
+    },
+    {
+      "id": "page_summary",
+      "kind": "summary_fields",
+      "label": "Page summary tallies",
+      "bbox": [850, 12100, 8400, 950],
+      "extraction": { "priority": "later" }
+    }
+  ],
+  "tables": [
+    {
+      "id": "inhabitants",
+      "label": "Inhabitants",
+      "bbox": [450, 2950, 9100, 8900],
+      "headerBands": [
+        { "id": "column_labels", "label": "Printed column labels", "bbox": [450, 2950, 9100, 1200] },
+        { "id": "column_numbers", "label": "Column numbers", "bbox": [450, 4150, 9100, 320] }
+      ],
+      "body": {
+        "firstRowY": 4470,
+        "rowCount": 40,
+        "rowHeight": 190,
+        "rowNumberSource": "right_margin"
+      },
+      "columns": [
+        { "id": "dwelling_no", "number": 1, "label": "Dwelling-houses numbered in the order of visitation", "type": "integer", "x": 450, "width": 300, "sticky": true },
+        { "id": "family_no", "number": 2, "label": "Families numbered in the order of visitation", "type": "integer", "x": 750, "width": 300, "sticky": true },
+        { "id": "name", "number": 3, "label": "Name of every person whose place of abode on the first day of June, 1870, was in this family", "type": "person_name", "x": 1050, "width": 1550, "dittoMarks": true },
+        { "id": "age", "number": 4, "label": "Age at last birthday", "type": "age", "x": 2600, "width": 300 },
+        { "id": "sex", "number": 5, "label": "Sex", "type": "enum", "x": 2900, "width": 220, "values": ["M", "F"] },
+        { "id": "race", "number": 6, "label": "Color", "type": "enum", "x": 3120, "width": 220, "values": ["W", "B", "M", "C", "I"] },
+        { "id": "occupation", "number": 7, "label": "Profession, occupation, or trade", "type": "text", "x": 3340, "width": 1400, "controlledVocab": "census_1870_occupations" },
+        { "id": "real_estate_value", "number": 8, "label": "Value of real estate", "type": "money", "x": 4740, "width": 450 },
+        { "id": "personal_estate_value", "number": 9, "label": "Value of personal estate", "type": "money", "x": 5190, "width": 450 },
+        { "id": "birthplace", "number": 10, "label": "Place of birth", "type": "place", "x": 5640, "width": 1250, "controlledVocab": "census_1870_places" },
+        { "id": "father_foreign_born", "number": 11, "label": "Father of foreign birth", "type": "mark", "x": 6890, "width": 240 },
+        { "id": "mother_foreign_born", "number": 12, "label": "Mother of foreign birth", "type": "mark", "x": 7130, "width": 240 },
+        { "id": "born_within_year", "number": 13, "label": "Born within the year", "type": "month_or_mark", "x": 7370, "width": 360 },
+        { "id": "married_within_year", "number": 14, "label": "Married within the year", "type": "month_or_mark", "x": 7730, "width": 360 },
+        { "id": "attended_school", "number": 15, "label": "Attended school within the year", "type": "mark", "x": 8090, "width": 240 },
+        { "id": "cannot_read", "number": 16, "label": "Cannot read", "type": "mark", "x": 8330, "width": 240 },
+        { "id": "cannot_write", "number": 17, "label": "Cannot write", "type": "mark", "x": 8570, "width": 240 },
+        { "id": "condition", "number": 18, "label": "Whether deaf and dumb, blind, insane, or idiotic", "type": "text", "x": 8810, "width": 520 },
+        { "id": "male_citizen_21_plus", "number": 19, "label": "Male citizen of U.S. of 21 years of age and upwards", "type": "mark", "x": 9330, "width": 300 },
+        { "id": "male_citizen_vote_denied", "number": 20, "label": "Male citizen of U.S. of 21 years of age and upwards where right to vote is denied or abridged", "type": "mark", "x": 9630, "width": 300 }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "surname_ditto",
+      "appliesTo": "inhabitants.name",
+      "kind": "inheritance",
+      "when": "value_looks_like_ditto_mark",
+      "inheritFrom": "previous_row.name.surname"
+    },
+    {
+      "id": "dwelling_family_sticky",
+      "appliesTo": ["inhabitants.dwelling_no", "inhabitants.family_no"],
+      "kind": "carry_forward",
+      "when": "blank",
+      "inheritFrom": "previous_nonblank"
+    }
+  ],
+  "vocabularies": {
+    "census_1870_places": {
+      "examples": ["Va", "N.Y.", "Ill.", "North Carolina", "Ireland"]
+    },
+    "census_1870_occupations": {
+      "examples": ["Farmer", "Farm Hand", "Keeping House", "Domestic Servant", "Blacksmith"]
+    }
+  },
+  "output": {
+    "primaryTable": "inhabitants",
+    "rowMeaning": "person"
+  }
+}

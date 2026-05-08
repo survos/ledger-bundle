@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.survos.com/ledger/v1/template.json",
+  "title": "LedgerSpec Template",
+  "type": "object",
+  "required": ["schema", "kind", "id", "title", "coordinateSpace"],
+  "properties": {
+    "schema": { "type": "string" },
+    "kind": { "const": "ledger_template" },
+    "id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string" },
+    "title": { "type": "string", "minLength": 1 },
+    "coordinateSpace": {
+      "type": "object",
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "origin": { "type": "string" },
+        "units": { "type": "string" }
+      }
+    },
+    "pageFields": { "type": "array" },
+    "regions": { "type": "array" },
+    "tables": { "type": "array" },
+    "rules": { "type": "array" },
+    "vocabularies": { "type": "object" },
+    "output": { "type": "object" }
+  }
+}
