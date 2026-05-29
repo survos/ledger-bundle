@@ -16,7 +16,7 @@
     },
     "require": {
         "php": "^8.4",
-        "survos/ai-pipeline-bundle": "^2.0",
+        "survos/ai-pipeline-bundle": "^2.5",
         "symfony/config": "^8.0",
         "symfony/dependency-injection": "^8.0",
         "symfony/http-kernel": "^8.0",
