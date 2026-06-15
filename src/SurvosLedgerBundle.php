@@ -5,7 +5,6 @@ namespace Survos\LedgerBundle;
 
 use Survos\LedgerBundle\Spec\LedgerTemplateCodec;
 use Survos\LedgerBundle\Spec\LedgerTemplateRegistry;
-use Survos\LedgerBundle\Task\ExtractLedgerTask;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -46,9 +45,7 @@ final class SurvosLedgerBundle extends AbstractBundle
             ->arg('$templatePaths', '%survos_ledger.template_paths%')
             ->arg('$codec', service(LedgerTemplateCodec::class));
 
-        if (interface_exists(\Survos\AiPipelineBundle\Task\AiTaskInterface::class)) {
-            $services->set(ExtractLedgerTask::class)
-                ->tag('ai_pipeline.task');
-        }
+        // ExtractLedgerTask is not registered yet — it needs porting from the
+        // removed ai-pipeline-bundle AiTaskInterface to an ai-workflow-bundle task.
     }
 }

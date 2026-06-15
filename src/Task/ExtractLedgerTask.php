@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Survos\LedgerBundle\Task;
 
-use Survos\AiPipelineBundle\Task\AiTaskInterface;
 use Survos\LedgerBundle\Spec\LedgerTemplate;
 use Survos\LedgerBundle\Spec\LedgerTemplateCodec;
 use Survos\LedgerBundle\Spec\LedgerTemplateRegistry;
@@ -13,7 +12,14 @@ use Symfony\AI\Platform\Message\MessageBag;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Twig\Environment as TwigEnvironment;
 
-final class ExtractLedgerTask implements AiTaskInterface
+/**
+ * TODO: port to ai-workflow-bundle. This was an ai-pipeline-bundle AiTaskInterface
+ * (now removed). The extraction logic is intact; what's deferred is the output
+ * mapping — whether a filled ledger template becomes one structured claim or a
+ * claim per field flows through a reasoning agent fed the ledger, not the ledger
+ * directly. Not registered as a service until that's decided.
+ */
+final class ExtractLedgerTask
 {
     public const TASK = 'extract_ledger';
 
